@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:latest
+FROM ubuntu:latest
 
 RUN apt update
 RUN apt -y install git g++ ninja-build wget xz-utils libunwind-dev libbfd-dev zlib1g-dev libzstd-dev libiberty-dev
@@ -16,6 +16,6 @@ WORKDIR /build/lua-debug
 RUN git submodule init
 RUN git submodule update
 RUN luamake lua compile/download_deps.lua
-RUN luamake
+RUN luamake -mode release
 
 
