@@ -33,10 +33,16 @@ jobs:
         sudo apt update && sudo apt install -y libiberty-dev
     - run: luamake lua compile/download_deps.lua
     - run: luamake -mode release -platform ${{ matrix.platform }}
-    - run: npm install -g @vscode/vsce ovsx
-    - run: npx vsce publish --target ${{ matrix.platform }} -p ${{ secrets.VSCE_KEY }}
-      working-directory: publish
-      continue-on-error: true
-    - run: npx ovsx publish --target ${{ matrix.platform }} -p ${{ secrets.OVSX_KEY }}
-      working-directory: publish
-      continue-on-error: true
+    #- run: npm install -g @vscode/vsce ovsx
+    #- run: npx vsce publish --target ${{ matrix.platform }} -p ${{ secrets.VSCE_KEY }}
+    #  working-directory: publish
+    #  continue-on-error: true
+    #- run: npx ovsx publish --target ${{ matrix.platform }} -p ${{ secrets.OVSX_KEY }}
+    #  working-directory: publish
+    #  continue-on-error: true
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifact
+        path: publish/
+        retention-days: 7 # Keep the artifact for 7 days
