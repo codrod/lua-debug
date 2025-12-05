@@ -2,10 +2,10 @@ name: build
 on:
   push:
     branches:
-    - master
+    - linux-static-linkage
   pull_request:
     branches:
-    - master
+    - linux-static-linkage
 jobs:
   compile:
     runs-on: ${{ matrix.os }}
@@ -13,16 +13,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: windows-latest
-            platform: win32-x64
+          #- os: windows-latest
+          #  platform: win32-x64
           - os: ubuntu-22.04
             platform: linux-x64
-          - os: ubuntu-22.04-arm
-            platform: linux-arm64
-          - os: macos-latest
-            platform: darwin-x64
-          - os: macos-latest
-            platform: darwin-arm64
+          #- os: ubuntu-22.04-arm
+          #  platform: linux-arm64
+          #- os: macos-latest
+          #  platform: darwin-x64
+          #- os: macos-latest
+          #  platform: darwin-arm64
     steps:
     - uses: actions/checkout@v4
       with:
