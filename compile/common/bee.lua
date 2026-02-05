@@ -181,7 +181,10 @@ lm:source_set "source_lua" {
     sources = {
         "3rd/lua55/onelua.c",
     },
-    defines = "MAKE_LIB",
+    defines = {
+        "MAKE_LIB",
+        "LUA_COMPAT_LOOPVAR",
+    },
     windows = {
         defines = "LUA_BUILD_AS_DLL",
     },
