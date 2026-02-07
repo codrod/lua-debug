@@ -133,9 +133,12 @@ lm:source_set "source_bee" {
         }
     },
     linux = {
-        ldflags = "-fPIE -pthread -l:libbfd.a -l:libiberty.a -l:libunwind.a -l:libsframe.so -l:libzstd.so -l:libz.so -l:liblzma.so",
+        ldflags = "-l:libbfd.a -l:libiberty.a",
         links = {
             "stdc++fs",
+            "unwind",
+            "sframe",
+            "z"
         }
     },
     macos = {
